@@ -1,0 +1,12 @@
+package rules
+
+import com.yanfu.model.Customer
+rule "Verify Customer Income"
+	when
+		customer: Customer(income>50000)
+	then
+//		customer.setIncomeInvalid(true);
+//		System.out.print("hello");
+        customer.setIncomeInvalid(true);
+        customer.setDesc("Hi "+ customer.getName()+", your income is invalid");
+	end

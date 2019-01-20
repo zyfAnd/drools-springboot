@@ -1,0 +1,27 @@
+package com.yanfu;
+import com.yanfu.model.Person;
+rule "person age"
+     when
+        person:Person(age>30);
+     then
+        person.setDesc("三十而立");
+        System.out.print("三十而立");
+end
+
+rule "person name"
+     when
+         person: Person(name!=null&&!name.equals(""))
+     then
+         person.setDesc("Hello "+person.getName()+" , "+person.getDesc());
+end
+
+rule "inome validation"
+     when
+        person: Person(income>50000)
+     then
+        person.setDesc("Hi "+ person.getName()+" , your income is invalid ");
+end
+
+query "all person when age >30"
+      allPerson:Person(age>30)
+end
